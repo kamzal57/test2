@@ -1,0 +1,1306 @@
+/* Variables globales */
+:root {
+    --primary-color: #4a6cf7; /* Blue - Pythagore */
+    --secondary-color: #ff4757; /* Red - Équations */
+    --tertiary-color: #6c63ff; /* Blue-purple - Accents */
+    --quaternary-color: #26de81; /* Green - Thalès */
+    --quinary-color: #ffb142; /* Orange - Probabilités */
+    --geometry-color: #feca57; /* Yellow - Géométrie */
+    --background-color: #f9faff;
+    --dark-color: #2f3a56;
+    --light-color: #ffffff;
+    --text-color: #333;
+    --border-radius: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header et navigation */
+header {
+    background-color: var(--light-color);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.menu {
+    display: flex;
+    gap: 15px;
+}
+
+.menu button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 8px 12px;
+    color: var(--dark-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.menu button:hover {
+    background-color: rgba(74, 108, 247, 0.1);
+}
+
+.menu button.selected[data-section="pythagore"] {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.menu button.selected[data-section="thales"] {
+    background-color: var(--quaternary-color);
+    color: white;
+}
+
+.menu button.selected[data-section="equations"] {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.menu button.selected[data-section="probabilites"] {
+    background-color: var(--quinary-color);
+    color: white;
+}
+
+.menu button.selected[data-section="geometrie"] {
+    background-color: var(--geometry-color);
+    color: white;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* Sections principales */
+main {
+    padding: 20px 0;
+}
+
+.math-section {
+    display: none;
+    padding: 20px 0;
+}
+
+.math-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#pythagore h2, #pythagore-lesson .modal-header, #pythagore-example .modal-header, #pythagore-exercise .modal-header {
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
+}
+
+#thales h2, #thales-lesson .modal-header, #thales-example .modal-header, #thales-exercise .modal-header {
+    background: linear-gradient(45deg, var(--quaternary-color), #20bd68);
+}
+
+#equations h2, #equations-lesson .modal-header, #equations-example .modal-header, #equations-exercise .modal-header {
+    background: linear-gradient(45deg, var(--secondary-color), #ff6b81);
+}
+
+#probabilites h2, #probabilites-lesson .modal-header, #probabilites-example .modal-header, #probabilites-exercise .modal-header {
+    background: linear-gradient(45deg, var(--quinary-color), #ff9f43);
+}
+
+#geometrie h2, #geometrie-lesson .modal-header, #geometrie-example .modal-header, #geometrie-exercise .modal-header {
+    background: linear-gradient(45deg, var(--geometry-color), #f6b93b);
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+}
+
+.formula {
+    background: linear-gradient(45deg, rgba(74, 108, 247, 0.2), rgba(108, 99, 255, 0.2));
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    border-left: 3px solid var(--primary-color);
+}
+
+#pythagore .formula {
+    background: linear-gradient(45deg, rgba(74, 108, 247, 0.2), rgba(108, 99, 255, 0.2));
+    border-left: 3px solid var(--primary-color);
+}
+
+#thales .formula {
+    background: linear-gradient(45deg, rgba(38, 222, 129, 0.2), rgba(38, 222, 129, 0.2));
+    border-left: 3px solid var(--quaternary-color);
+}
+
+#equations .formula {
+    background: linear-gradient(45deg, rgba(255, 71, 87, 0.2), rgba(255, 71, 87, 0.2));
+    border-left: 3px solid var(--secondary-color);
+}
+
+#probabilites .formula {
+    background: linear-gradient(45deg, rgba(255, 177, 66, 0.2), rgba(255, 177, 66, 0.2));
+    border-left: 3px solid var(--quinary-color);
+}
+
+#geometrie .formula {
+    background: linear-gradient(45deg, rgba(254, 202, 87, 0.2), rgba(254, 202, 87, 0.2));
+    border-left: 3px solid var(--geometry-color);
+}
+
+#conversions .formula {
+    background: linear-gradient(45deg, rgba(156, 136, 255, 0.2), rgba(156, 136, 255, 0.2));
+    border-left: 3px solid #9c88ff;
+}
+
+.illustration {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Formulaires */
+.math-form {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.form-section h3 {
+    margin-bottom: 10px;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    flex: 1 1 calc(50% - 15px);
+    min-width: 200px;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.input-field input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.2);
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.radio-group label:hover {
+    background-color: rgba(74, 108, 247, 0.1);
+}
+
+.radio-group input[type="radio"]:checked + label,
+.radio-group label:has(input[type="radio"]:checked) {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#pythagore .radio-group input[type="radio"]:checked + label,
+#pythagore .radio-group label:has(input[type="radio"]:checked) {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#thales .radio-group input[type="radio"]:checked + label,
+#thales .radio-group label:has(input[type="radio"]:checked) {
+    background-color: var(--quaternary-color);
+    color: white;
+}
+
+#equations .radio-group input[type="radio"]:checked + label,
+#equations .radio-group label:has(input[type="radio"]:checked) {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+#probabilites .radio-group input[type="radio"]:checked + label,
+#probabilites .radio-group label:has(input[type="radio"]:checked) {
+    background-color: var(--quinary-color);
+    color: white;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.calculate-btn, .reset-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.calculate-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
+    color: white;
+    flex: 2;
+    box-shadow: 0 4px 10px rgba(74, 108, 247, 0.3);
+}
+
+#pythagore .calculate-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
+    box-shadow: 0 4px 10px rgba(74, 108, 247, 0.3);
+}
+
+#thales .calculate-btn {
+    background: linear-gradient(45deg, var(--quaternary-color), #20bd68);
+    box-shadow: 0 4px 10px rgba(38, 222, 129, 0.3);
+}
+
+#equations .calculate-btn {
+    background: linear-gradient(45deg, var(--secondary-color), #ff6b81);
+    box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+}
+
+#probabilites .calculate-btn {
+    background: linear-gradient(45deg, var(--quinary-color), #ff9f43);
+    box-shadow: 0 4px 10px rgba(255, 177, 66, 0.3);
+}
+
+#geometrie .calculate-btn {
+    background: linear-gradient(45deg, var(--geometry-color), #f6b93b);
+    box-shadow: 0 4px 10px rgba(254, 202, 87, 0.3);
+}
+
+#pythagore .calculate-btn:hover {
+    background: linear-gradient(45deg, var(--tertiary-color), var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(74, 108, 247, 0.4);
+}
+
+#thales .calculate-btn:hover {
+    background: linear-gradient(45deg, #20bd68, var(--quaternary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(38, 222, 129, 0.4);
+}
+
+#equations .calculate-btn:hover {
+    background: linear-gradient(45deg, #ff6b81, var(--secondary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 71, 87, 0.4);
+}
+
+#probabilites .calculate-btn:hover {
+    background: linear-gradient(45deg, #ff9f43, var(--quinary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 177, 66, 0.4);
+}
+
+#geometrie .calculate-btn:hover {
+    background: linear-gradient(45deg, #f6b93b, var(--geometry-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(254, 202, 87, 0.4);
+}
+
+.reset-btn {
+    background-color: #f1f1f1;
+    color: var(--dark-color);
+    flex: 1;
+    border: 1px solid #e0e0e0;
+}
+
+.reset-btn:hover {
+    background-color: #e5e5e5;
+    color: var(--secondary-color);
+}
+
+/* Equation styling */
+.equation-input {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.operator {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Tabs styling */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 10px 15px;
+    background: linear-gradient(45deg, #f5f5f5, #ffffff);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+    color: var(--dark-color);
+    border-bottom: 2px solid transparent;
+}
+
+.tab-btn:hover {
+    background: linear-gradient(45deg, rgba(74, 108, 247, 0.1), rgba(108, 99, 255, 0.1));
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.tab-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(74, 108, 247, 0.3);
+}
+
+#pythagore .tab-btn:hover {
+    background: rgba(74, 108, 247, 0.1);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+#pythagore .tab-btn.active {
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
+}
+
+#thales .tab-btn:hover {
+    background: rgba(38, 222, 129, 0.1);
+    border-bottom: 2px solid var(--quaternary-color);
+}
+
+#thales .tab-btn.active {
+    background: linear-gradient(45deg, var(--quaternary-color), #20bd68);
+}
+
+#equations .tab-btn:hover {
+    background: rgba(255, 71, 87, 0.1);
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+#equations .tab-btn.active {
+    background: linear-gradient(45deg, var(--secondary-color), #ff6b81);
+}
+
+#probabilites .tab-btn:hover {
+    background: rgba(255, 177, 66, 0.1);
+    border-bottom: 2px solid var(--quinary-color);
+}
+
+#probabilites .tab-btn.active {
+    background: linear-gradient(45deg, var(--quinary-color), #ff9f43);
+}
+
+#geometrie .tab-btn:hover {
+    background: rgba(254, 202, 87, 0.1);
+    border-bottom: 2px solid var(--geometry-color);
+}
+
+#geometrie .tab-btn.active {
+    background: linear-gradient(45deg, var(--geometry-color), #f6b93b);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Results display */
+.result {
+    margin-top: 20px;
+}
+
+#pythagore-result .result-card {
+    border-left: 4px solid var(--primary-color);
+}
+
+#thales-result .result-card {
+    border-left: 4px solid var(--quaternary-color);
+}
+
+#equations-result .result-card {
+    border-left: 4px solid var(--secondary-color);
+}
+
+#proba-simple-result .result-card, #proba-complement-result .result-card, #proba-conditional-result .result-card {
+    border-left: 4px solid var(--quinary-color);
+}
+
+#cercle-result .result-card, #rectangle-result .result-card, #triangle-result .result-card,
+#trapeze-result .result-card, #parallelogramme-result .result-card, #cylindre-result .result-card {
+    border-left: 4px solid var(--geometry-color);
+}
+
+.result-card {
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.result-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.result-card p {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.result-value {
+    font-weight: 700;
+    font-size: 1.3rem !important;
+    color: var(--secondary-color);
+    text-shadow: 0px 0px 1px rgba(255, 71, 87, 0.3);
+}
+
+.steps-container {
+    margin-top: 15px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 10px;
+    background-color: rgba(74, 108, 247, 0.03);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.steps-container h4 {
+    color: var(--quaternary-color);
+    margin-bottom: 8px;
+    font-size: 1rem;
+    border-left: 3px solid var(--quaternary-color);
+    padding-left: 8px;
+}
+
+.result-steps {
+    margin-left: 20px;
+    color: var(--dark-color);
+}
+
+.result-steps li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.result-formula {
+    color: var(--dark-color);
+    font-family: 'Courier New', monospace;
+    margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.social-share {
+    display: flex;
+    gap: 10px;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: var(--border-radius);
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.share-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: var(--tertiary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 1000;
+}
+
+.notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: var(--light-color);
+        padding: 20px;
+        box-shadow: var(--shadow);
+        z-index: 100;
+    }
+    
+    .menu.open {
+        display: flex;
+    }
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .input-field {
+        flex: 1 1 100%;
+        min-width: 100%;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Sidebar Navigation */
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: linear-gradient(135deg, var(--dark-color), #1a2133);
+    color: white;
+    padding: 20px 0;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    z-index: 90;
+    transition: var(--transition);
+}
+
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    z-index: 99;
+    font-size: 1.5rem;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.sidebar-header {
+    padding: 0 20px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 15px;
+}
+
+.sidebar-section {
+    margin-bottom: 20px;
+}
+
+.sidebar-section-title {
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebar-section-title:hover {
+    background-color: rgba(255,255,255,0.05);
+}
+
+.sidebar-items {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.sidebar-section.open .sidebar-items {
+    max-height: 1000px;
+}
+
+.sidebar-item {
+    padding: 8px 20px 8px 30px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-item:hover {
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+    border-left: 3px solid var(--quinary-color);
+}
+
+.sidebar-item i {
+    margin-right: 8px;
+    font-size: 0.8rem;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active .modal {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
+    color: white;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.modal-header h3 {
+    font-size: 1.3rem;
+    color: white;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+.modal-content {
+    padding: 20px;
+    color: var(--dark-color);
+}
+
+.modal-content h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin: 20px 0 10px;
+    border-left: 4px solid;
+    padding-left: 10px;
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#pythagore-lesson .modal-content h4, #pythagore-example .modal-content h4, #pythagore-exercise .modal-content h4 {
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-left-color: var(--primary-color);
+}
+
+#thales-lesson .modal-content h4, #thales-example .modal-content h4, #thales-exercise .modal-content h4 {
+    background: linear-gradient(45deg, var(--quaternary-color), #20bd68);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-left-color: var(--quaternary-color);
+}
+
+#equations-lesson .modal-content h4, #equations-example .modal-content h4, #equations-exercise .modal-content h4 {
+    background: linear-gradient(45deg, var(--secondary-color), #ff6b81);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-left-color: var(--secondary-color);
+}
+
+#probabilites-lesson .modal-content h4, #probabilites-example .modal-content h4, #probabilites-exercise .modal-content h4 {
+    background: linear-gradient(45deg, var(--quinary-color), #ff9f43);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-left-color: var(--quinary-color);
+}
+
+#geometrie-lesson .modal-content h4, #geometrie-example .modal-content h4, #geometrie-exercise .modal-content h4 {
+    background: linear-gradient(45deg, var(--geometry-color), #f6b93b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-left-color: var(--geometry-color);
+}
+
+.modal-content p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.modal-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.modal-content li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 5px;
+}
+
+.modal-content .math-example {
+    background: linear-gradient(135deg, rgba(74, 108, 247, 0.05), rgba(108, 99, 255, 0.05));
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin: 15px 0;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+#pythagore-lesson .math-example, #pythagore-example .math-example, #pythagore-exercise .math-example {
+    background: linear-gradient(135deg, rgba(74, 108, 247, 0.05), rgba(108, 99, 255, 0.05));
+    border-left: 4px solid var(--primary-color);
+}
+
+#thales-lesson .math-example, #thales-example .math-example, #thales-exercise .math-example {
+    background: linear-gradient(135deg, rgba(38, 222, 129, 0.05), rgba(38, 222, 129, 0.05));
+    border-left: 4px solid var(--quaternary-color);
+}
+
+#equations-lesson .math-example, #equations-example .math-example, #equations-exercise .math-example {
+    background: linear-gradient(135deg, rgba(255, 71, 87, 0.05), rgba(255, 71, 87, 0.05));
+    border-left: 4px solid var(--secondary-color);
+}
+
+#probabilites-lesson .math-example, #probabilites-example .math-example, #probabilites-exercise .math-example {
+    background: linear-gradient(135deg, rgba(255, 177, 66, 0.05), rgba(255, 177, 66, 0.05));
+    border-left: 4px solid var(--quinary-color);
+}
+
+#geometrie-lesson .math-example, #geometrie-example .math-example, #geometrie-exercise .math-example {
+    background: linear-gradient(135deg, rgba(254, 202, 87, 0.05), rgba(254, 202, 87, 0.05));
+    border-left: 4px solid var(--geometry-color);
+}
+
+.modal-content .exercise {
+    border-left: 4px solid var(--quaternary-color);
+    padding-left: 15px;
+    margin: 20px 0;
+    background: linear-gradient(135deg, rgba(38, 222, 129, 0.05), rgba(38, 222, 129, 0.02));
+    padding: 15px;
+    border-radius: var(--border-radius);
+}
+
+#pythagore-exercise .exercise {
+    border-left: 4px solid var(--primary-color);
+    background: linear-gradient(135deg, rgba(74, 108, 247, 0.05), rgba(74, 108, 247, 0.02));
+}
+
+#thales-exercise .exercise {
+    border-left: 4px solid var(--quaternary-color);
+    background: linear-gradient(135deg, rgba(38, 222, 129, 0.05), rgba(38, 222, 129, 0.02));
+}
+
+#equations-exercise .exercise {
+    border-left: 4px solid var(--secondary-color);
+    background: linear-gradient(135deg, rgba(255, 71, 87, 0.05), rgba(255, 71, 87, 0.02));
+}
+
+#probabilites-exercise .exercise {
+    border-left: 4px solid var(--quinary-color);
+    background: linear-gradient(135deg, rgba(255, 177, 66, 0.05), rgba(255, 177, 66, 0.02));
+}
+
+#geometrie-exercise .exercise {
+    border-left: 4px solid var(--geometry-color);
+    background: linear-gradient(135deg, rgba(254, 202, 87, 0.05), rgba(254, 202, 87, 0.02));
+}
+
+.modal-content .exercise h4 {
+    color: var(--quaternary-color);
+    margin-top: 0;
+    border-left: none;
+    padding-left: 0;
+    background: linear-gradient(45deg, var(--quaternary-color), #20bd68);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#pythagore-exercise .exercise h4 {
+    color: var(--primary-color);
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#thales-exercise .exercise h4 {
+    color: var(--quaternary-color);
+    background: linear-gradient(45deg, var(--quaternary-color), #20bd68);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#equations-exercise .exercise h4 {
+    color: var(--secondary-color);
+    background: linear-gradient(45deg, var(--secondary-color), #ff6b81);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#probabilites-exercise .exercise h4 {
+    color: var(--quinary-color);
+    background: linear-gradient(45deg, var(--quinary-color), #ff9f43);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#geometrie-exercise .exercise h4 {
+    color: var(--geometry-color);
+    background: linear-gradient(45deg, var(--geometry-color), #f6b93b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.solution-toggle {
+    background: linear-gradient(45deg, var(--tertiary-color), var(--primary-color));
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(108, 99, 255, 0.3);
+}
+
+#pythagore-exercise .solution-toggle {
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color));
+    box-shadow: 0 2px 5px rgba(74, 108, 247, 0.3);
+}
+
+#thales-exercise .solution-toggle {
+    background: linear-gradient(45deg, var(--quaternary-color), #20bd68);
+    box-shadow: 0 2px 5px rgba(38, 222, 129, 0.3);
+}
+
+#equations-exercise .solution-toggle {
+    background: linear-gradient(45deg, var(--secondary-color), #ff6b81);
+    box-shadow: 0 2px 5px rgba(255, 71, 87, 0.3);
+}
+
+#probabilites-exercise .solution-toggle {
+    background: linear-gradient(45deg, var(--quinary-color), #ff9f43);
+    box-shadow: 0 2px 5px rgba(255, 177, 66, 0.3);
+}
+
+#geometrie-exercise .solution-toggle {
+    background: linear-gradient(45deg, var(--geometry-color), #f6b93b);
+    box-shadow: 0 2px 5px rgba(254, 202, 87, 0.3);
+}
+
+#pythagore-exercise .solution-toggle:hover {
+    background: linear-gradient(45deg, var(--tertiary-color), var(--primary-color));
+    box-shadow: 0 4px 8px rgba(74, 108, 247, 0.4);
+}
+
+#thales-exercise .solution-toggle:hover {
+    background: linear-gradient(45deg, #20bd68, var(--quaternary-color));
+    box-shadow: 0 4px 8px rgba(38, 222, 129, 0.4);
+}
+
+#equations-exercise .solution-toggle:hover {
+    background: linear-gradient(45deg, #ff6b81, var(--secondary-color));
+    box-shadow: 0 4px 8px rgba(255, 71, 87, 0.4);
+}
+
+#probabilites-exercise .solution-toggle:hover {
+    background: linear-gradient(45deg, #ff9f43, var(--quinary-color));
+    box-shadow: 0 4px 8px rgba(255, 177, 66, 0.4);
+}
+
+#geometrie-exercise .solution-toggle:hover {
+    background: linear-gradient(45deg, #f6b93b, var(--geometry-color));
+    box-shadow: 0 4px 8px rgba(254, 202, 87, 0.4);
+}
+
+/* Modal navigation buttons */
+.modal-nav-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 1;
+    padding: 0 30px;
+    box-sizing: border-box;
+    left: 0;
+}
+
+.modal-prev, .modal-next {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: 0 -20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border: none;
+    color: var(--dark-color);
+    transition: var(--transition);
+    pointer-events: auto;
+}
+
+.modal-prev:hover, .modal-next:hover {
+    background-color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.modal-prev i, .modal-next i {
+    margin: 0;
+}
+
+#pythagore .modal-prev:hover, #pythagore .modal-next:hover,
+#pythagore-lesson .modal-prev:hover, #pythagore-lesson .modal-next:hover,
+#pythagore-example .modal-prev:hover, #pythagore-example .modal-next:hover,
+#pythagore-exercise .modal-prev:hover, #pythagore-exercise .modal-next:hover {
+    background-color: rgba(74, 108, 247, 0.2);
+    color: var(--primary-color);
+}
+
+#thales .modal-prev:hover, #thales .modal-next:hover,
+#thales-lesson .modal-prev:hover, #thales-lesson .modal-next:hover,
+#thales-example .modal-prev:hover, #thales-example .modal-next:hover,
+#thales-exercise .modal-prev:hover, #thales-exercise .modal-next:hover {
+    background-color: rgba(38, 222, 129, 0.2);
+    color: var(--quaternary-color);
+}
+
+#equations .modal-prev:hover, #equations .modal-next:hover,
+#equations-lesson .modal-prev:hover, #equations-lesson .modal-next:hover,
+#equations-example .modal-prev:hover, #equations-example .modal-next:hover,
+#equations-exercise .modal-prev:hover, #equations-exercise .modal-next:hover {
+    background-color: rgba(255, 71, 87, 0.2);
+    color: var(--secondary-color);
+}
+
+#probabilites .modal-prev:hover, #probabilites .modal-next:hover,
+#probabilites-lesson .modal-prev:hover, #probabilites-lesson .modal-next:hover,
+#probabilites-example .modal-prev:hover, #probabilites-example .modal-next:hover,
+#probabilites-exercise .modal-prev:hover, #probabilites-exercise .modal-next:hover {
+    background-color: rgba(255, 177, 66, 0.2);
+    color: var(--quinary-color);
+}
+
+#geometrie .modal-prev:hover, #geometrie .modal-next:hover,
+#geometrie-lesson .modal-prev:hover, #geometrie-lesson .modal-next:hover,
+#geometrie-example .modal-prev:hover, #geometrie-example .modal-next:hover,
+#geometrie-exercise .modal-prev:hover, #geometrie-exercise .modal-next:hover {
+    background-color: rgba(254, 202, 87, 0.2);
+    color: var(--geometry-color);
+}
+
+/* Additional color-specific styling for sidebar sections */
+.sidebar-section[data-type="pythagore"] .sidebar-section-title {
+    color: var(--primary-color);
+}
+
+.sidebar-section[data-type="thales"] .sidebar-section-title {
+    color: var(--quaternary-color);
+}
+
+.sidebar-section[data-type="equations"] .sidebar-section-title {
+    color: var(--secondary-color);
+}
+
+/* Responsive styles for sidebar */
+@media screen and (max-width: 992px) {
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        z-index: 100;
+    }
+    
+    .sidebar.open {
+        left: 0;
+    }
+    
+    .sidebar-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .page-wrapper {
+        display: block;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.pulsate {
+    animation: pulsate 1s ease-out;
+}
+
+@keyframes pulsate {
+    0% { transform: scale(0.95); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.sidebar-section[data-type="pythagore"] .sidebar-item:hover {
+    background: linear-gradient(90deg, rgba(74, 108, 247, 0.1), transparent);
+    border-left: 3px solid var(--primary-color);
+}
+
+.sidebar-section[data-type="thales"] .sidebar-item:hover {
+    background: linear-gradient(90deg, rgba(38, 222, 129, 0.1), transparent);
+    border-left: 3px solid var(--quaternary-color);
+}
+
+.sidebar-section[data-type="equations"] .sidebar-item:hover {
+    background: linear-gradient(90deg, rgba(255, 71, 87, 0.1), transparent);
+    border-left: 3px solid var(--secondary-color);
+}
+
+.sidebar-section[data-type="probabilites"] .sidebar-item:hover {
+    background: linear-gradient(90deg, rgba(255, 177, 66, 0.1), transparent);
+    border-left: 3px solid var(--quinary-color);
+}
+
+.sidebar-section[data-type="geometrie"] .sidebar-item:hover {
+    background: linear-gradient(90deg, rgba(254, 202, 87, 0.1), transparent);
+    border-left: 3px solid var(--geometry-color);
+}
+
+/* Conversion styles */
+#conversions h2 {
+    background: linear-gradient(45deg, #9c88ff, #8c7ae6);
+}
+
+#conversions .calculate-btn {
+    background: linear-gradient(45deg, #9c88ff, #8c7ae6);
+    box-shadow: 0 4px 10px rgba(156, 136, 255, 0.3);
+}
+
+#conversions .calculate-btn:hover {
+    background: linear-gradient(45deg, #8c7ae6, #9c88ff);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(156, 136, 255, 0.4);
+}
+
+#conversions .tab-btn:hover {
+    background: rgba(156, 136, 255, 0.1);
+    border-bottom: 2px solid #9c88ff;
+}
+
+#conversions .tab-btn.active {
+    background: linear-gradient(45deg, #9c88ff, #8c7ae6);
+}
+
+#longueur-result .result-card, #masse-result .result-card, #volume-result .result-card,
+#surface-result .result-card, #temperature-result .result-card, #temps-result .result-card {
+    border-left: 4px solid #9c88ff;
+}
+
+#conversions select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: white;
+}
+
+#conversions select:focus {
+    border-color: #9c88ff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(156, 136, 255, 0.2);
+}

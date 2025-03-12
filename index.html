@@ -1,0 +1,2119 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathSolver - Résolvez vos problèmes mathématiques</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.2/+esm"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Ressources</h2>
+            </div>
+            
+            <!-- Pythagore -->
+            <div class="sidebar-section open" data-type="pythagore">
+                <div class="sidebar-section-title">
+                    Pythagore <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="sidebar-items">
+                    <div class="sidebar-item" data-modal="pythagore-lesson">
+                        <i class="fas fa-book"></i> Leçon
+                    </div>
+                    <div class="sidebar-item" data-modal="pythagore-example">
+                        <i class="fas fa-lightbulb"></i> Exemple
+                    </div>
+                    <div class="sidebar-item" data-modal="pythagore-exercise">
+                        <i class="fas fa-pencil-alt"></i> Exercices
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Thalès -->
+            <div class="sidebar-section" data-type="thales">
+                <div class="sidebar-section-title">
+                    Thalès <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="sidebar-items">
+                    <div class="sidebar-item" data-modal="thales-lesson">
+                        <i class="fas fa-book"></i> Leçon
+                    </div>
+                    <div class="sidebar-item" data-modal="thales-example">
+                        <i class="fas fa-lightbulb"></i> Exemple
+                    </div>
+                    <div class="sidebar-item" data-modal="thales-exercise">
+                        <i class="fas fa-pencil-alt"></i> Exercices
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Équations -->
+            <div class="sidebar-section" data-type="equations">
+                <div class="sidebar-section-title">
+                    Équations <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="sidebar-items">
+                    <div class="sidebar-item" data-modal="equations-lesson">
+                        <i class="fas fa-book"></i> Leçon
+                    </div>
+                    <div class="sidebar-item" data-modal="equations-example">
+                        <i class="fas fa-lightbulb"></i> Exemple
+                    </div>
+                    <div class="sidebar-item" data-modal="equations-exercise">
+                        <i class="fas fa-pencil-alt"></i> Exercices
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Probabilités -->
+            <div class="sidebar-section" data-type="probabilites">
+                <div class="sidebar-section-title">
+                    Probabilités <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="sidebar-items">
+                    <div class="sidebar-item" data-modal="probabilites-lesson">
+                        <i class="fas fa-book"></i> Leçon
+                    </div>
+                    <div class="sidebar-item" data-modal="probabilites-example">
+                        <i class="fas fa-lightbulb"></i> Exemple
+                    </div>
+                    <div class="sidebar-item" data-modal="probabilites-exercise">
+                        <i class="fas fa-pencil-alt"></i> Exercices
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Géométrie -->
+            <div class="sidebar-section" data-type="geometrie">
+                <div class="sidebar-section-title">
+                    Géométrie <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="sidebar-items">
+                    <div class="sidebar-item" data-modal="geometrie-lesson">
+                        <i class="fas fa-book"></i> Leçon
+                    </div>
+                    <div class="sidebar-item" data-modal="geometrie-example">
+                        <i class="fas fa-lightbulb"></i> Exemple
+                    </div>
+                    <div class="sidebar-item" data-modal="geometrie-exercise">
+                        <i class="fas fa-pencil-alt"></i> Exercices
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Conversions -->
+            <div class="sidebar-section" data-type="conversions">
+                <div class="sidebar-section-title">
+                    Conversions <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="sidebar-items">
+                    <div class="sidebar-item" data-modal="conversions-lesson">
+                        <i class="fas fa-book"></i> Leçon
+                    </div>
+                    <div class="sidebar-item" data-modal="conversions-example">
+                        <i class="fas fa-lightbulb"></i> Exemple
+                    </div>
+                    <div class="sidebar-item" data-modal="conversions-exercise">
+                        <i class="fas fa-pencil-alt"></i> Exercices
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <div class="main-content">
+            <header>
+                <nav>
+                    <div class="logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <circle cx="20" cy="20" r="18" fill="#4a6cf7" />
+                            <text x="20" y="26" font-size="18" font-weight="bold" text-anchor="middle" fill="white">M</text>
+                        </svg>
+                        <h1>MathSolver</h1>
+                    </div>
+                    <div class="menu" id="nav-menu">
+                        <button class="selected" data-section="pythagore">Pythagore</button>
+                        <button data-section="thales">Thalès</button>
+                        <button data-section="equations">Équations</button>
+                        <button data-section="probabilites">Probabilités</button>
+                        <button data-section="geometrie">Géométrie</button>
+                        <button data-section="conversions">Conversions</button>
+                    </div>
+                    <div class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </nav>
+            </header>
+
+            <main>
+                <!-- Section Pythagore -->
+                <section id="pythagore" class="math-section active">
+                    <div class="container">
+                        <h2>Théorème de Pythagore</h2>
+                        <p class="description">Calculez le côté manquant d'un triangle rectangle en utilisant la formule: <span class="formula">a² + b² = c²</span></p>
+                        
+                        <div class="illustration">
+                            <svg width="240" height="180" viewBox="0 0 240 180">
+                                <polygon points="20,160 220,160 20,40" fill="rgba(74, 108, 247, 0.2)" stroke="#4a6cf7" stroke-width="2"/>
+                                <text x="120" y="170" text-anchor="middle">a</text>
+                                <text x="10" y="100" text-anchor="middle">b</text>
+                                <text x="120" y="90" text-anchor="middle">c</text>
+                                <rect x="20" y="155" width="5" height="5" fill="#4a6cf7"/>
+                            </svg>
+                        </div>
+                        
+                        <form id="pythagore-form" class="math-form">
+                            <div class="form-section">
+                                <h3>Quelle valeur recherchez-vous?</h3>
+                                <div class="radio-group">
+                                    <label>
+                                        <input type="radio" name="pythagore-search" value="c" checked> 
+                                        Hypoténuse (c)
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="pythagore-search" value="a"> 
+                                        Premier côté (a)
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="pythagore-search" value="b"> 
+                                        Deuxième côté (b)
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group" id="pythagore-inputs">
+                                <div class="input-field">
+                                    <label for="pythagore-a">Côté a:</label>
+                                    <input type="number" id="pythagore-a" step="any" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="pythagore-b">Côté b:</label>
+                                    <input type="number" id="pythagore-b" step="any" required>
+                                </div>
+                                <div class="input-field" style="display: none;">
+                                    <label for="pythagore-c">Hypoténuse c:</label>
+                                    <input type="number" id="pythagore-c" step="any">
+                                </div>
+                            </div>
+                            
+                            <div class="button-group">
+                                <button type="submit" class="calculate-btn">Calculer</button>
+                                <button type="reset" class="reset-btn">Réinitialiser</button>
+                            </div>
+                        </form>
+                        
+                        <div class="result" id="pythagore-result">
+                            <div class="result-card hidden">
+                                <h3>Résultat :</h3>
+                                <p class="result-value"></p>
+                                <p class="result-formula"></p>
+                                <div class="steps-container">
+                                    <h4>Démarche détaillée :</h4>
+                                    <ul class="result-steps"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section Thalès -->
+                <section id="thales" class="math-section">
+                    <div class="container">
+                        <h2>Théorème de Thalès</h2>
+                        <p class="description">Calculez les longueurs manquantes dans des triangles semblables avec la formule: <span class="formula">OA/OA' = OB/OB' = AB/A'B'</span></p>
+                        
+                        <div class="illustration">
+                            <svg width="240" height="180" viewBox="0 0 240 180">
+                                <polygon points="120,20 220,160 20,160" fill="rgba(74, 108, 247, 0.2)" stroke="#4a6cf7" stroke-width="2"/>
+                                <polygon points="120,20 170,100 70,100" fill="rgba(255, 122, 89, 0.2)" stroke="#ff7a59" stroke-width="2"/>
+                                <text x="120" y="15" text-anchor="middle">O</text>
+                                <text x="170" y="115" text-anchor="middle">A</text>
+                                <text x="70" y="115" text-anchor="middle">B</text>
+                                <text x="220" y="175" text-anchor="middle">A'</text>
+                                <text x="20" y="175" text-anchor="middle">B'</text>
+                            </svg>
+                        </div>
+                        
+                        <form id="thales-form" class="math-form">
+                            <div class="input-group">
+                                <div class="input-field">
+                                    <label for="thales-oa">OA:</label>
+                                    <input type="number" id="thales-oa" step="any" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="thales-ob">OB:</label>
+                                    <input type="number" id="thales-ob" step="any" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="thales-ab">AB:</label>
+                                    <input type="number" id="thales-ab" step="any" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="thales-oa-prime">OA':</label>
+                                    <input type="number" id="thales-oa-prime" step="any">
+                                </div>
+                                <div class="input-field">
+                                    <label for="thales-ob-prime">OB':</label>
+                                    <input type="number" id="thales-ob-prime" step="any">
+                                </div>
+                                <div class="input-field">
+                                    <label for="thales-ab-prime">A'B':</label>
+                                    <input type="number" id="thales-ab-prime" step="any">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Valeur à calculer:</h3>
+                                <div class="radio-group">
+                                    <label>
+                                        <input type="radio" name="thales-search" value="oa-prime" checked> 
+                                        OA'
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="thales-search" value="ob-prime"> 
+                                        OB'
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="thales-search" value="ab-prime"> 
+                                        A'B'
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="button-group">
+                                <button type="submit" class="calculate-btn">Calculer</button>
+                                <button type="reset" class="reset-btn">Réinitialiser</button>
+                            </div>
+                        </form>
+                        
+                        <div class="result" id="thales-result">
+                            <div class="result-card hidden">
+                                <h3>Résultat :</h3>
+                                <p class="result-value"></p>
+                                <p class="result-formula"></p>
+                                <div class="steps-container">
+                                    <h4>Démarche détaillée :</h4>
+                                    <ul class="result-steps"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section Équations -->
+                <section id="equations" class="math-section">
+                    <div class="container">
+                        <h2>Équations du premier degré</h2>
+                        <p class="description">Résoudre les équations de la forme <span class="formula">ax + b = 0</span></p>
+                        
+                        <form id="equations-form" class="math-form">
+                            <div class="equation-input">
+                                <div class="input-field">
+                                    <label for="equations-a">a:</label>
+                                    <input type="number" id="equations-a" step="any" required>
+                                </div>
+                                <span class="operator">x +</span>
+                                <div class="input-field">
+                                    <label for="equations-b">b:</label>
+                                    <input type="number" id="equations-b" step="any" required>
+                                </div>
+                                <span class="operator">= 0</span>
+                            </div>
+                            
+                            <div class="button-group">
+                                <button type="submit" class="calculate-btn">Résoudre</button>
+                                <button type="reset" class="reset-btn">Réinitialiser</button>
+                            </div>
+                        </form>
+                        
+                        <div class="result" id="equations-result">
+                            <div class="result-card hidden">
+                                <h3>Solution :</h3>
+                                <p class="result-value"></p>
+                                <p class="result-formula"></p>
+                                <div class="steps-container">
+                                    <h4>Démarche détaillée :</h4>
+                                    <ul class="result-steps"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section Probabilités -->
+                <section id="probabilites" class="math-section">
+                    <div class="container">
+                        <h2>Probabilités</h2>
+                        <p class="description">Calculer différentes probabilités</p>
+                        
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="simple">Probabilité simple</button>
+                            <button class="tab-btn" data-tab="complement">Probabilité complémentaire</button>
+                            <button class="tab-btn" data-tab="conditional">Probabilité conditionnelle</button>
+                        </div>
+                        
+                        <div id="simple" class="tab-content active">
+                            <form id="proba-simple-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="proba-simple-favorable">Nombre de cas favorables:</label>
+                                        <input type="number" id="proba-simple-favorable" min="0" step="1" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="proba-simple-possible">Nombre de cas possibles:</label>
+                                        <input type="number" id="proba-simple-possible" min="1" step="1" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="proba-simple-result">
+                                <div class="result-card hidden">
+                                    <h3>Probabilité :</h3>
+                                    <p class="result-value"></p>
+                                    <p class="result-formula"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="complement" class="tab-content">
+                            <form id="proba-complement-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="proba-complement-event">Probabilité de l'événement A:</label>
+                                        <input type="number" id="proba-complement-event" min="0" max="1" step="0.01" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="proba-complement-result">
+                                <div class="result-card hidden">
+                                    <h3>Probabilité du complémentaire :</h3>
+                                    <p class="result-value"></p>
+                                    <p class="result-formula"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="conditional" class="tab-content">
+                            <form id="proba-conditional-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="proba-conditional-joint">P(A ∩ B):</label>
+                                        <input type="number" id="proba-conditional-joint" min="0" max="1" step="0.01" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="proba-conditional-b">P(B):</label>
+                                        <input type="number" id="proba-conditional-b" min="0" max="1" step="0.01" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="proba-conditional-result">
+                                <div class="result-card hidden">
+                                    <h3>Probabilité conditionnelle P(A|B) :</h3>
+                                    <p class="result-value"></p>
+                                    <p class="result-formula"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section Géométrie -->
+                <section id="geometrie" class="math-section">
+                    <div class="container">
+                        <h2>Calculs géométriques</h2>
+                        <p class="description">Calculer l'aire et le périmètre de différentes figures géométriques</p>
+                        
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="cercle">2D - Cercle</button>
+                            <button class="tab-btn" data-tab="rectangle">2D - Rectangle</button>
+                            <button class="tab-btn" data-tab="triangle">2D - Triangle</button>
+                            <button class="tab-btn" data-tab="trapeze">2D - Trapèze</button>
+                            <button class="tab-btn" data-tab="parallelogramme">2D - Parallélogramme</button>
+                            <button class="tab-btn" data-tab="cylindre">3D - Cylindre</button>
+                            <button class="tab-btn" data-tab="sphere">3D - Sphère</button>
+                            <button class="tab-btn" data-tab="cone">3D - Cône</button>
+                            <button class="tab-btn" data-tab="cube">3D - Cube</button>
+                            <button class="tab-btn" data-tab="prisme">3D - Prisme</button>
+                        </div>
+                        
+                        <div id="cercle" class="tab-content active">
+                            <div class="illustration">
+                                <svg width="160" height="160" viewBox="0 0 160 160">
+                                    <circle cx="80" cy="80" r="70" fill="rgba(74, 108, 247, 0.2)" stroke="#4a6cf7" stroke-width="2"/>
+                                    <line x1="80" y1="80" x2="150" y2="80" stroke="#4a6cf7" stroke-width="2"/>
+                                    <text x="110" y="75" text-anchor="middle">r</text>
+                                </svg>
+                            </div>
+                            
+                            <form id="cercle-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="cercle-rayon">Rayon:</label>
+                                        <input type="number" id="cercle-rayon" min="0" step="any" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="cercle-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultats :</h3>
+                                    <p class="result-aire"></p>
+                                    <p class="result-perimetre"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="rectangle" class="tab-content">
+                            <div class="illustration">
+                                <svg width="180" height="140" viewBox="0 0 180 140">
+                                    <rect x="20" y="20" width="140" height="100" fill="rgba(74, 108, 247, 0.2)" stroke="#4a6cf7" stroke-width="2"/>
+                                    <text x="90" y="15" text-anchor="middle">Largeur</text>
+                                    <text x="10" y="70" text-anchor="middle" transform="rotate(-90, 10, 70)">Longueur</text>
+                                </svg>
+                            </div>
+                            
+                            <form id="rectangle-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="rectangle-longueur">Longueur:</label>
+                                        <input type="number" id="rectangle-longueur" min="0" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="rectangle-largeur">Largeur:</label>
+                                        <input type="number" id="rectangle-largeur" min="0" step="any" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="rectangle-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultats :</h3>
+                                    <p class="result-aire"></p>
+                                    <p class="result-perimetre"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="triangle" class="tab-content">
+                            <div class="illustration">
+                                <svg width="180" height="160" viewBox="0 0 180 160">
+                                    <polygon points="90,20 160,140 20,140" fill="rgba(74, 108, 247, 0.2)" stroke="#4a6cf7" stroke-width="2"/>
+                                    <line x1="90" y1="20" x2="90" y2="140" stroke="#ff7a59" stroke-dasharray="5,5" stroke-width="2"/>
+                                    <text x="90" y="85" text-anchor="end">h</text>
+                                    <text x="90" y="155" text-anchor="middle">b</text>
+                                </svg>
+                            </div>
+                            
+                            <form id="triangle-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="triangle-base">Base:</label>
+                                        <input type="number" id="triangle-base" min="0" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="triangle-hauteur">Hauteur:</label>
+                                        <input type="number" id="triangle-hauteur" min="0" step="any" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer Aire</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="triangle-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultat :</h3>
+                                    <p class="result-aire"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="trapeze" class="tab-content">
+                            <div class="illustration">
+                                <svg width="180" height="140" viewBox="0 0 180 140">
+                                    <polygon points="40,40 140,40 160,100 20,100" fill="rgba(255, 71, 87, 0.2)" stroke="#ff4757" stroke-width="2"/>
+                                    <line x1="40" y1="40" x2="20" y2="100" stroke="#ff4757" stroke-dasharray="5,5" stroke-width="1"/>
+                                    <line x1="140" y1="40" x2="160" y2="100" stroke="#ff4757" stroke-dasharray="5,5" stroke-width="1"/>
+                                    <text x="90" y="30" text-anchor="middle">a</text>
+                                    <text x="90" y="115" text-anchor="middle">c</text>
+                                    <text x="90" y="70" text-anchor="middle">h</text>
+                                </svg>
+                            </div>
+                            
+                            <form id="trapeze-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="trapeze-petite-base">Petite base (a):</label>
+                                        <input type="number" id="trapeze-petite-base" min="0" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="trapeze-grande-base">Grande base (c):</label>
+                                        <input type="number" id="trapeze-grande-base" min="0" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="trapeze-hauteur">Hauteur (h):</label>
+                                        <input type="number" id="trapeze-hauteur" min="0" step="any" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer Aire</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="trapeze-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultat :</h3>
+                                    <p class="result-aire"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="parallelogramme" class="tab-content">
+                            <div class="illustration">
+                                <svg width="180" height="140" viewBox="0 0 180 140">
+                                    <polygon points="40,40 140,40 120,100 20,100" fill="rgba(38, 222, 129, 0.2)" stroke="#26de81" stroke-width="2"/>
+                                    <line x1="40" y1="40" x2="40" y2="100" stroke="#26de81" stroke-dasharray="5,5" stroke-width="2"/>
+                                    <text x="30" y="70" text-anchor="middle">Hauteur</text>
+                                </svg>
+                            </div>
+                            
+                            <form id="parallelogramme-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="parallelogramme-base">Base:</label>
+                                        <input type="number" id="parallelogramme-base" min="0" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="parallelogramme-hauteur">Hauteur:</label>
+                                        <input type="number" id="parallelogramme-hauteur" min="0" step="any" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer Aire</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="parallelogramme-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultat :</h3>
+                                    <p class="result-aire"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="cylindre" class="tab-content">
+                            <div class="illustration">
+                                <svg width="180" height="160" viewBox="0 0 180 160">
+                                    <ellipse cx="90" cy="40" rx="50" ry="20" fill="rgba(255, 177, 66, 0.2)" stroke="#ffb142" stroke-width="2"/>
+                                    <ellipse cx="90" cy="120" rx="50" ry="20" fill="rgba(255, 177, 66, 0.3)" stroke="#ffb142" stroke-width="2"/>
+                                    <line x1="40" y1="40" x2="40" y2="120" stroke="#ffb142" stroke-width="2"/>
+                                    <line x1="140" y1="40" x2="140" y2="120" stroke="#ffb142" stroke-width="2"/>
+                                    <text x="90" y="30" text-anchor="middle">r</text>
+                                    <text x="25" y="80" text-anchor="middle">h</text>
+                                </svg>
+                            </div>
+                            
+                            <form id="cylindre-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="cylindre-rayon">Rayon:</label>
+                                        <input type="number" id="cylindre-rayon" min="0" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="cylindre-hauteur">Hauteur:</label>
+                                        <input type="number" id="cylindre-hauteur" min="0" step="any" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="cylindre-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultats :</h3>
+                                    <p class="result-volume"></p>
+                                    <p class="result-surface"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="sphere" class="tab-content">
+                            <div class="illustration">
+                                <svg width="180" height="160" viewBox="0 0 180 160">
+                                    <circle cx="90" cy="80" r="60" fill="rgba(254, 202, 87, 0.2)" stroke="#feca57" stroke-width="2"/>
+                                    <ellipse cx="90" cy="80" rx="60" ry="20" fill="rgba(254, 202, 87, 0.1)" stroke="#feca57" stroke-width="1" stroke-dasharray="3,3"/>
+                                    <line x1="90" y1="80" x2="150" y2="80" stroke="#feca57" stroke-width="2"/>
+                                    <text x="120" y="75" text-anchor="middle">r</text>
+                                </svg>
+                            </div>
+                            
+                            <form id="sphere-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="sphere-rayon">Rayon:</label>
+                                        <input type="number" id="sphere-rayon" min="0" step="any" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="sphere-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultats :</h3>
+                                    <p class="result-volume"></p>
+                                    <p class="result-surface"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="cone" class="tab-content">
+                            <div class="illustration">
+                                <svg width="180" height="160" viewBox="0 0 180 160">
+                                    <ellipse cx="90" cy="120" rx="50" ry="20" fill="rgba(254, 202, 87, 0.2)" stroke="#feca57" stroke-width="2"/>
+                                    <path d="M90,20 L140,120 A50,20 0 1,1 40,120 Z" fill="rgba(254, 202, 87, 0.2)" stroke="#feca57" stroke-width="2"/>
+                                    <line x1="90" y1="20" x2="90" y2="120" stroke="#feca57" stroke-width="1" stroke-dasharray="4,4"/>
+                                    <text x="80" y="70" text-anchor="end">h</text>
+                                    <text x="110" y="120" text-anchor="middle">r</text>
+                                </svg>
+                            </div>
+                            
+                            <form id="cone-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="cone-rayon">Rayon de la base:</label>
+                                        <input type="number" id="cone-rayon" min="0" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="cone-hauteur">Hauteur:</label>
+                                        <input type="number" id="cone-hauteur" min="0" step="any" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="cone-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultats :</h3>
+                                    <p class="result-volume"></p>
+                                    <p class="result-surface"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="cube" class="tab-content">
+                            <div class="illustration">
+                                <svg width="180" height="160" viewBox="0 0 180 160">
+                                    <rect x="40" y="40" width="80" height="80" fill="rgba(254, 202, 87, 0.2)" stroke="#feca57" stroke-width="2"/>
+                                    <polyline points="40,40 60,20 140,20 120,40" fill="none" stroke="#feca57" stroke-width="2"/>
+                                    <polyline points="120,40 120,120 140,100 140,20" fill="none" stroke="#feca57" stroke-width="2"/>
+                                    <polyline points="120,120 40,120 60,100 140,100" fill="none" stroke="#feca57" stroke-width="2"/>
+                                    <polyline points="40,120 40,40" fill="none" stroke="#feca57" stroke-width="2"/>
+                                    <text x="80" y="135" text-anchor="middle">a</text>
+                                </svg>
+                            </div>
+                            
+                            <form id="cube-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="cube-cote">Côté:</label>
+                                        <input type="number" id="cube-cote" min="0" step="any" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="cube-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultats :</h3>
+                                    <p class="result-volume"></p>
+                                    <p class="result-surface"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="prisme" class="tab-content">
+                            <div class="illustration">
+                                <svg width="180" height="160" viewBox="0 0 180 160">
+                                    <polygon points="60,40 120,40 140,70 80,70" fill="rgba(254, 202, 87, 0.2)" stroke="#feca57" stroke-width="2"/>
+                                    <polygon points="60,40 60,100 80,130 80,70" fill="rgba(254, 202, 87, 0.2)" stroke="#feca57" stroke-width="2"/>
+                                    <polygon points="80,70 80,130 140,130 140,70" fill="rgba(254, 202, 87, 0.2)" stroke="#feca57" stroke-width="2"/>
+                                    <polygon points="60,100 120,100 140,130 80,130" fill="rgba(254, 202, 87, 0.1)" stroke="#feca57" stroke-width="2" stroke-dasharray="3,3"/>
+                                    <polygon points="120,40 120,100 140,130 140,70" fill="rgba(254, 202, 87, 0.1)" stroke="#feca57" stroke-width="2" stroke-dasharray="3,3"/>
+                                    <text x="100" y="55" text-anchor="middle">Base</text>
+                                    <text x="50" y="85" text-anchor="middle">h</text>
+                                </svg>
+                            </div>
+                            
+                            <form id="prisme-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="prisme-base">Aire de la base:</label>
+                                        <input type="number" id="prisme-base" min="0" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="prisme-hauteur">Hauteur:</label>
+                                        <input type="number" id="prisme-hauteur" min="0" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="prisme-perimetre">Périmètre de la base:</label>
+                                        <input type="number" id="prisme-perimetre" min="0" step="any" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Calculer</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="prisme-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultats :</h3>
+                                    <p class="result-volume"></p>
+                                    <p class="result-surface"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section Conversions -->
+                <section id="conversions" class="math-section">
+                    <div class="container">
+                        <h2>Conversions d'unités</h2>
+                        <p class="description">Convertissez facilement entre différentes unités de mesure</p>
+                        
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="longueur">Longueur</button>
+                            <button class="tab-btn" data-tab="masse">Masse</button>
+                            <button class="tab-btn" data-tab="volume-conv">Volume</button>
+                            <button class="tab-btn" data-tab="surface">Surface</button>
+                            <button class="tab-btn" data-tab="temperature">Température</button>
+                            <button class="tab-btn" data-tab="temps">Temps</button>
+                        </div>
+                        
+                        <div id="longueur" class="tab-content active">
+                            <form id="longueur-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="longueur-valeur">Valeur:</label>
+                                        <input type="number" id="longueur-valeur" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="longueur-de">De:</label>
+                                        <select id="longueur-de" required>
+                                            <option value="mm">Millimètre (mm)</option>
+                                            <option value="cm">Centimètre (cm)</option>
+                                            <option value="m" selected>Mètre (m)</option>
+                                            <option value="km">Kilomètre (km)</option>
+                                            <option value="in">Pouce (in)</option>
+                                            <option value="ft">Pied (ft)</option>
+                                            <option value="yd">Yard (yd)</option>
+                                            <option value="mi">Mile (mi)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="longueur-vers">Vers:</label>
+                                        <select id="longueur-vers" required>
+                                            <option value="mm">Millimètre (mm)</option>
+                                            <option value="cm" selected>Centimètre (cm)</option>
+                                            <option value="m">Mètre (m)</option>
+                                            <option value="km">Kilomètre (km)</option>
+                                            <option value="in">Pouce (in)</option>
+                                            <option value="ft">Pied (ft)</option>
+                                            <option value="yd">Yard (yd)</option>
+                                            <option value="mi">Mile (mi)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Convertir</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="longueur-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultat :</h3>
+                                    <p class="result-value"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="masse" class="tab-content">
+                            <form id="masse-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="masse-valeur">Valeur:</label>
+                                        <input type="number" id="masse-valeur" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="masse-de">De:</label>
+                                        <select id="masse-de" required>
+                                            <option value="mg">Milligramme (mg)</option>
+                                            <option value="g">Gramme (g)</option>
+                                            <option value="kg" selected>Kilogramme (kg)</option>
+                                            <option value="t">Tonne (t)</option>
+                                            <option value="oz">Once (oz)</option>
+                                            <option value="lb">Livre (lb)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="masse-vers">Vers:</label>
+                                        <select id="masse-vers" required>
+                                            <option value="mg">Milligramme (mg)</option>
+                                            <option value="g" selected>Gramme (g)</option>
+                                            <option value="kg">Kilogramme (kg)</option>
+                                            <option value="t">Tonne (t)</option>
+                                            <option value="oz">Once (oz)</option>
+                                            <option value="lb">Livre (lb)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Convertir</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="masse-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultat :</h3>
+                                    <p class="result-value"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="volume-conv" class="tab-content">
+                            <form id="volume-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="volume-valeur">Valeur:</label>
+                                        <input type="number" id="volume-valeur" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="volume-de">De:</label>
+                                        <select id="volume-de" required>
+                                            <option value="ml">Millilitre (ml)</option>
+                                            <option value="cl">Centilitre (cl)</option>
+                                            <option value="dl">Décilitre (dl)</option>
+                                            <option value="l" selected>Litre (l)</option>
+                                            <option value="m3">Mètre cube (m³)</option>
+                                            <option value="in3">Pouce cube (in³)</option>
+                                            <option value="ft3">Pied cube (ft³)</option>
+                                            <option value="gal">Gallon US (gal)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="volume-vers">Vers:</label>
+                                        <select id="volume-vers" required>
+                                            <option value="ml" selected>Millilitre (ml)</option>
+                                            <option value="cl">Centilitre (cl)</option>
+                                            <option value="dl">Décilitre (dl)</option>
+                                            <option value="l">Litre (l)</option>
+                                            <option value="m3">Mètre cube (m³)</option>
+                                            <option value="in3">Pouce cube (in³)</option>
+                                            <option value="ft3">Pied cube (ft³)</option>
+                                            <option value="gal">Gallon US (gal)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Convertir</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="volume-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultat :</h3>
+                                    <p class="result-value"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="surface" class="tab-content">
+                            <form id="surface-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="surface-valeur">Valeur:</label>
+                                        <input type="number" id="surface-valeur" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="surface-de">De:</label>
+                                        <select id="surface-de" required>
+                                            <option value="mm2">Millimètre carré (mm²)</option>
+                                            <option value="cm2">Centimètre carré (cm²)</option>
+                                            <option value="m2" selected>Mètre carré (m²)</option>
+                                            <option value="a">Are (a)</option>
+                                            <option value="ha">Hectare (ha)</option>
+                                            <option value="km2">Kilomètre carré (km²)</option>
+                                            <option value="in2">Pouce carré (in²)</option>
+                                            <option value="ft2">Pied carré (ft²)</option>
+                                            <option value="ac">Acre (ac)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="surface-vers">Vers:</label>
+                                        <select id="surface-vers" required>
+                                            <option value="mm2">Millimètre carré (mm²)</option>
+                                            <option value="cm2" selected>Centimètre carré (cm²)</option>
+                                            <option value="m2">Mètre carré (m²)</option>
+                                            <option value="a">Are (a)</option>
+                                            <option value="ha">Hectare (ha)</option>
+                                            <option value="km2">Kilomètre carré (km²)</option>
+                                            <option value="in2">Pouce carré (in²)</option>
+                                            <option value="ft2">Pied carré (ft²)</option>
+                                            <option value="ac">Acre (ac)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Convertir</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="surface-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultat :</h3>
+                                    <p class="result-value"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="temperature" class="tab-content">
+                            <form id="temperature-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="temperature-valeur">Valeur:</label>
+                                        <input type="number" id="temperature-valeur" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="temperature-de">De:</label>
+                                        <select id="temperature-de" required>
+                                            <option value="c" selected>Celsius (°C)</option>
+                                            <option value="f">Fahrenheit (°F)</option>
+                                            <option value="k">Kelvin (K)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="temperature-vers">Vers:</label>
+                                        <select id="temperature-vers" required>
+                                            <option value="c">Celsius (°C)</option>
+                                            <option value="f" selected>Fahrenheit (°F)</option>
+                                            <option value="k">Kelvin (K)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Convertir</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="temperature-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultat :</h3>
+                                    <p class="result-value"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="temps" class="tab-content">
+                            <form id="temps-form" class="math-form">
+                                <div class="input-group">
+                                    <div class="input-field">
+                                        <label for="temps-valeur">Valeur:</label>
+                                        <input type="number" id="temps-valeur" step="any" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="temps-de">De:</label>
+                                        <select id="temps-de" required>
+                                            <option value="ms">Milliseconde (ms)</option>
+                                            <option value="s">Seconde (s)</option>
+                                            <option value="min" selected>Minute (min)</option>
+                                            <option value="h">Heure (h)</option>
+                                            <option value="j">Jour (j)</option>
+                                            <option value="sem">Semaine (sem)</option>
+                                            <option value="mois">Mois (mois)</option>
+                                            <option value="an">Année (an)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="temps-vers">Vers:</label>
+                                        <select id="temps-vers" required>
+                                            <option value="ms">Milliseconde (ms)</option>
+                                            <option value="s" selected>Seconde (s)</option>
+                                            <option value="min">Minute (min)</option>
+                                            <option value="h">Heure (h)</option>
+                                            <option value="j">Jour (j)</option>
+                                            <option value="sem">Semaine (sem)</option>
+                                            <option value="mois">Mois (mois)</option>
+                                            <option value="an">Année (an)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" class="calculate-btn">Convertir</button>
+                                    <button type="reset" class="reset-btn">Réinitialiser</button>
+                                </div>
+                            </form>
+                            
+                            <div class="result" id="temps-result">
+                                <div class="result-card hidden">
+                                    <h3>Résultat :</h3>
+                                    <p class="result-value"></p>
+                                    <div class="steps-container">
+                                        <h4>Démarche détaillée :</h4>
+                                        <ul class="result-steps"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <div class="container">
+                    <p>&copy; 2023 MathSolver - Résolvez vos problèmes mathématiques</p>
+                    <div class="social-share">
+                        <button id="copy-link" class="share-btn">
+                            <i class="fas fa-link"></i> Copier le lien
+                        </button>
+                        <a href="#" class="share-btn" id="share-facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="share-btn" id="share-twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <!-- Mobile sidebar toggle -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Modals for lessons, examples and exercises -->
+    <!-- Pythagore -->
+    <div class="modal-overlay" id="pythagore-lesson">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Théorème de Pythagore - Leçon</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <h4>Définition et contexte</h4>
+                <p>Le théorème de Pythagore est un principe fondamental de la géométrie qui établit une relation entre les longueurs des côtés d'un triangle rectangle. Il est nommé d'après le mathématicien grec Pythagore qui aurait vécu au VIe siècle av. J.-C.</p>
+                
+                <h4>Énoncé du théorème</h4>
+                <p>Dans un triangle rectangle, le carré de la longueur de l'hypoténuse (le côté opposé à l'angle droit) est égal à la somme des carrés des longueurs des deux autres côtés.</p>
+                
+                <p>Si nous appelons :</p>
+                <ul>
+                    <li><strong>c</strong> : la longueur de l'hypoténuse</li>
+                    <li><strong>a</strong> et <strong>b</strong> : les longueurs des deux autres côtés (les cathètes)</li>
+                </ul>
+                
+                <p>Alors le théorème de Pythagore s'exprime par la formule :</p>
+                <div class="math-example">
+                    <p><strong>c² = a² + b²</strong></p>
+                </div>
+                
+                <h4>Réciproque du théorème</h4>
+                <p>La réciproque du théorème de Pythagore est également vraie : si, dans un triangle, le carré de la longueur d'un côté est égal à la somme des carrés des longueurs des deux autres côtés, alors ce triangle est rectangle et l'angle droit est opposé au plus grand côté.</p>
+                
+                <h4>Applications pratiques</h4>
+                <p>Le théorème de Pythagore est utilisé dans de nombreux domaines comme :</p>
+                <ul>
+                    <li>L'architecture et la construction</li>
+                    <li>La navigation</li>
+                    <li>La cartographie</li>
+                    <li>Les mathématiques avancées</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="pythagore-example">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Théorème de Pythagore - Exemple</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <h4>Exemple 1: Calculer l'hypoténuse</h4>
+                <p>Soit un triangle rectangle dont les cathètes mesurent 3 cm et 4 cm. Calculons la longueur de l'hypoténuse.</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Identifions les valeurs connues.</p>
+                    <p>a = 3 cm</p>
+                    <p>b = 4 cm</p>
+                    <p>c = ? (l'hypoténuse à calculer)</p>
+                    
+                    <p><strong>Étape 2:</strong> Appliquons le théorème de Pythagore.</p>
+                    <p>c² = a² + b²</p>
+                    <p>c² = 3² + 4²</p>
+                    <p>c² = 9 + 16</p>
+                    <p>c² = 25</p>
+                    
+                    <p><strong>Étape 3:</strong> Calculons la racine carrée pour trouver c.</p>
+                    <p>c = √25</p>
+                    <p>c = 5 cm</p>
+                </div>
+                
+                <h4>Exemple 2: Vérifier si un triangle est rectangle</h4>
+                <p>Soit un triangle dont les côtés mesurent 5 cm, 12 cm et 13 cm. Est-ce un triangle rectangle?</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Identifions le plus grand côté (potentiellement l'hypoténuse).</p>
+                    <p>Le plus grand côté mesure 13 cm.</p>
+                    
+                    <p><strong>Étape 2:</strong> Vérifions si le carré de ce côté est égal à la somme des carrés des deux autres côtés.</p>
+                    <p>13² = 5² + 12² ?</p>
+                    <p>169 = 25 + 144 ?</p>
+                    <p>169 = 169 ✓</p>
+                    
+                    <p><strong>Conclusion:</strong> L'égalité est vérifiée, donc ce triangle est bien rectangle.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="pythagore-exercise">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Théorème de Pythagore - Exercices</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <div class="exercise">
+                    <h4>Exercice 1</h4>
+                    <p>Un triangle rectangle a pour cathètes 6 cm et 8 cm. Calculez la longueur de l'hypoténuse.</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Identifions les valeurs.</p>
+                        <p>a = 6 cm, b = 8 cm, c = ? (hypoténuse)</p>
+                        
+                        <p><strong>Étape 2:</strong> Appliquons le théorème de Pythagore.</p>
+                        <p>c² = a² + b²</p>
+                        <p>c² = 6² + 8²</p>
+                        <p>c² = 36 + 64</p>
+                        <p>c² = 100</p>
+                        
+                        <p><strong>Étape 3:</strong> Calculons la racine carrée pour trouver c.</p>
+                        <p>c = √100 = 10 cm</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercice 2</h4>
+                    <p>Dans un triangle rectangle, l'hypoténuse mesure 15 cm et un cathète mesure 9 cm. Quelle est la longueur de l'autre cathète?</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Identifions les valeurs.</p>
+                        <p>c = 15 cm (hypoténuse), a = 9 cm, b = ? (cathète à trouver)</p>
+                        
+                        <p><strong>Étape 2:</strong> Réorganisons la formule de Pythagore pour isoler b.</p>
+                        <p>c² = a² + b²</p>
+                        <p>b² = c² - a²</p>
+                        
+                        <p><strong>Étape 3:</strong> Substituons les valeurs connues.</p>
+                        <p>b² = 15² - 9²</p>
+                        <p>b² = 225 - 81</p>
+                        <p>b² = 144</p>
+                        
+                        <p><strong>Étape 4:</strong> Calculons b.</p>
+                        <p>b = √144 = 12 cm</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercice 3</h4>
+                    <p>Déterminez si un triangle dont les côtés mesurent 7 cm, 24 cm et 25 cm est rectangle ou non.</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Identifions le plus grand côté (potentiellement l'hypoténuse).</p>
+                        <p>Le plus grand côté mesure 25 cm.</p>
+                        
+                        <p><strong>Étape 2:</strong> Vérifions si le carré de ce côté est égal à la somme des carrés des deux autres côtés.</p>
+                        <p>25² = 7² + 24² ?</p>
+                        <p>625 = 49 + 576 ?</p>
+                        <p>625 = 625 ✓</p>
+                        
+                        <p><strong>Conclusion:</strong> L'égalité est vérifiée, donc ce triangle est bien rectangle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Thalès -->
+    <div class="modal-overlay" id="thales-lesson">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Théorème de Thalès - Leçon</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <h4>Définition et contexte</h4>
+                <p>Le théorème de Thalès, attribué au mathématicien grec Thalès de Milet (VIe siècle av. J.-C.), est un résultat fondamental de la géométrie qui établit des relations de proportionnalité entre les segments formés par des droites parallèles coupées par des sécantes.</p>
+                
+                <h4>Énoncé du théorème</h4>
+                <p>Si deux droites parallèles coupent deux sécantes quelconques, alors les mesures des segments déterminés sur les sécantes sont proportionnelles.</p>
+                
+                <p>Plus précisément, dans une configuration où des parallèles coupent un faisceau de droites issues d'un même point O :</p>
+                <div class="math-example">
+                    <p><strong>OA/OA' = OB/OB' = AB/A'B'</strong></p>
+                </div>
+                
+                <h4>Réciproque du théorème</h4>
+                <p>La réciproque du théorème de Thalès est également vraie : Si un point partage les deux côtés d'un angle dans le même rapport, alors la droite joignant ces points est parallèle au troisième côté du triangle.</p>
+                
+                <h4>Applications pratiques</h4>
+                <p>Le théorème de Thalès est utilisé dans de nombreux domaines comme :</p>
+                <ul>
+                    <li>La construction de figures géométriques similaires</li>
+                    <li>La résolution de problèmes d'accessibilité (mesure indirecte)</li>
+                    <li>Le calcul de distances inaccessibles</li>
+                    <li>La cartographie et la triangulation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="thales-example">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Théorème de Thalès - Exemple</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <h4>Exemple 1: Calculer une longueur manquante</h4>
+                <p>Dans la figure ci-dessous, les droites (AC) et (BD) sont parallèles. On connaît:</p>
+                <ul>
+                    <li>OA = 3 cm</li>
+                    <li>OC = 7 cm</li>
+                    <li>OB = 4 cm</li>
+                </ul>
+                <p>Calculons OD.</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> D'après le théorème de Thalès, nous avons:</p>
+                    <p>OA/OC = OB/OD</p>
+                    
+                    <p><strong>Étape 2:</strong> Réorganisons l'équation pour isoler OD:</p>
+                    <p>OD = (OB × OC) / OA</p>
+                    
+                    <p><strong>Étape 3:</strong> Remplaçons par les valeurs connues:</p>
+                    <p>OD = (4 × 7) / 3</p>
+                    <p>OD = 28 / 3</p>
+                    <p>OD ≈ 9,33 cm</p>
+                </div>
+                
+                <h4>Exemple 2: Calculer un rapport de proportionnalité</h4>
+                <p>Dans un triangle ABC, M est un point du côté AB tel que AM = 2 cm et AB = 5 cm. E est un point du côté AC tel que les droites (DE) et (BC) sont parallèles. Calculons AE sachant que AC = 12 cm.</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Nous connaissons le rapport AM/AB = 2/5 = 0,4</p>
+                    
+                    <p><strong>Étape 2:</strong> D'après le théorème de Thalès, puisque (DE) est parallèle à (BC), nous avons:</p>
+                    <p>AM/AB = AE/AC</p>
+                    
+                    <p><strong>Étape 3:</strong> Réorganisons l'équation pour isoler AE:</p>
+                    <p>AE = (AM × AC) / AB</p>
+                    
+                    <p><strong>Étape 4:</strong> Remplaçons par les valeurs connues:</p>
+                    <p>AE = (2 × 12) / 5</p>
+                    <p>AE = 24 / 5 = 4,8 cm</p>
+                    
+                    <p><strong>Conclusion:</strong> La longueur de AE est de 4,8 cm.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="thales-exercise">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Théorème de Thalès - Exercices</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <div class="exercise">
+                    <h4>Exercice 1</h4>
+                    <p>Dans la figure ci-dessous, les droites (MN) et (PQ) sont parallèles. On sait que OM = 4 cm, ON = 10 cm et OP = 6 cm. Calculez OQ.</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> D'après le théorème de Thalès, nous avons:</p>
+                        <p>OM/ON = OP/OQ</p>
+                        
+                        <p><strong>Étape 2:</strong> Réorganisons l'équation pour isoler OQ:</p>
+                        <p>OQ = (OA × ON) / OM</p>
+                        
+                        <p><strong>Étape 3:</strong> Remplaçons par les valeurs connues:</p>
+                        <p>OQ = (6 × 10) / 4</p>
+                        <p>OQ = 60 / 4 = 15 cm</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercice 2</h4>
+                    <p>Dans un triangle ABC, D est un point du côté [AB] tel que AD = 2 cm et AB = 5 cm. E est un point du côté [AC] tel que les droites (DE) et (BC) sont parallèles. Calculez AE sachant que AC = 12 cm.</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Nous connaissons le rapport AD/AB = 2/5 = 0,4</p>
+                        
+                        <p><strong>Étape 2:</strong> D'après le théorème de Thalès, puisque (DE) est parallèle à (BC), nous avons:</p>
+                        <p>AD/AB = AE/AC</p>
+                        
+                        <p><strong>Étape 3:</strong> Réorganisons l'équation pour isoler AE:</p>
+                        <p>AE = (AD × AC) / AB</p>
+                        
+                        <p><strong>Étape 4:</strong> Remplaçons par les valeurs connues:</p>
+                        <p>AE = (3 × 12) / 8</p>
+                        <p>AE = 36 / 8 = 4,5 cm</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercice 3</h4>
+                    <p>Dans une configuration de Thalès, on a OA = 5 cm, OA' = 8 cm et OB = 7 cm. Calculez OB'.</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> D'après le théorème de Thalès, nous avons:</p>
+                        <p>OA/OA' = OB/OB'</p>
+                        
+                        <p><strong>Étape 2:</strong> Réorganisons l'équation pour isoler OB':</p>
+                        <p>OB' = (OB × OA') / OA</p>
+                        
+                        <p><strong>Étape 3:</strong> Remplaçons par les valeurs connues:</p>
+                        <p>OB' = (7 × 8) / 5</p>
+                        <p>OB' = 56 / 5 = 11,2 cm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Équations -->
+    <div class="modal-overlay" id="equations-lesson">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Équations du premier degré - Leçon</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <h4>Définition et contexte</h4>
+                <p>Une équation du premier degré (ou équation linéaire) est une équation où la variable recherchée apparaît uniquement à la puissance 1. Ces équations sont fondamentales en algèbre et constituent souvent la première étape vers la résolution de problèmes plus complexes.</p>
+                
+                <h4>Forme standard</h4>
+                <p>Une équation du premier degré à une inconnue x peut s'écrire sous la forme:</p>
+                <div class="math-example">
+                    <p><strong>ax + b = 0</strong></p>
+                    <p>où a et b sont des constantes réelles, avec a ≠ 0.</p>
+                </div>
+                
+                <h4>Méthode de résolution</h4>
+                <p>Pour résoudre une équation du premier degré, on isole l'inconnue x d'un côté de l'équation:</p>
+                <ul>
+                    <li>On déplace tous les termes contenant x d'un côté de l'équation</li>
+                    <li>On déplace tous les autres termes de l'autre côté</li>
+                    <li>On factorise x si nécessaire</li>
+                    <li>On divise les deux membres par le coefficient de x</li>
+                </ul>
+                
+                <h4>Cas particuliers</h4>
+                <p><strong>1. Si a = 0 et b = 0:</strong> L'équation devient 0 = 0, qui est toujours vraie. L'équation admet une infinité de solutions.</p>
+                <p><strong>2. Si a = 0 et b ≠ 0:</strong> L'équation devient b = 0, ce qui est impossible si b ≠ 0. L'équation n'admet aucune solution.</p>
+                
+                <h4>Applications</h4>
+                <p>Les équations du premier degré ont de nombreuses applications:</p>
+                <ul>
+                    <li>Problèmes de vitesse, de distance et de temps</li>
+                    <li>Problèmes de mélange</li>
+                    <li>Problèmes financiers simples</li>
+                    <li>Linéarisation de phénomènes physiques</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="equations-example">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Équations du premier degré - Exemples</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <h4>Exemple 1: Équation simple</h4>
+                <p>Résolvons l'équation: 3x + 6 = 0</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Isolons le terme avec x.</p>
+                    <p>3x + 6 = 0</p>
+                    <p>3x = -6</p>
+                    
+                    <p><strong>Étape 2:</strong> Divisons les deux membres par le coefficient de x.</p>
+                    <p>x = -6 / 3</p>
+                    <p>x = -2</p>
+                    
+                    <p><strong>Vérification:</strong> Remplaçons x par -2 dans l'équation d'origine.</p>
+                    <p>3 × (-2) + 6 = -6 + 6 = 0 ✓</p>
+                </div>
+                
+                <h4>Exemple 2: Équation avec fractions</h4>
+                <p>Résolvons l'équation: (2x)/3 - 4 = 2</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Réorganisons l'équation pour isoler le terme avec x.</p>
+                    <p>(2x)/3 - 4 = 2</p>
+                    <p>(2x)/3 = 6</p>
+                    
+                    <p><strong>Étape 2:</strong> Multiplions les deux membres par 3 pour éliminer le dénominateur.</p>
+                    <p>2x = 18</p>
+                    
+                    <p><strong>Étape 3:</strong> Divisons par 2 pour isoler x.</p>
+                    <p>x = 9</p>
+                    
+                    <p><strong>Vérification:</strong> Remplaçons x par 9 dans l'équation d'origine.</p>
+                    <p>(2 × 9)/3 - 4 = 6 - 4 = 2 ✓</p>
+                </div>
+                
+                <h4>Exemple 3: Cas particulier</h4>
+                <p>Résolvons l'équation: 0x + 5 = 0</p>
+                
+                <div class="math-example">
+                    <p><strong>Analyse:</strong> Cette équation peut s'écrire sous la forme 0x = -5</p>
+                    <p>Puisque 0 multiplié par n'importe quel nombre reste 0, il n'existe aucune valeur de x qui satisfasse cette équation.</p>
+                    <p><strong>Conclusion:</strong> L'équation n'admet aucune solution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="equations-exercise">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Équations du premier degré - Exercices</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <div class="exercise">
+                    <h4>Exercice 1</h4>
+                    <p>Résoudre l'équation: 5x - 12 = 0</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Isolons le terme avec x.</p>
+                        <p>5x - 12 = 0</p>
+                        <p>5x = 12</p>
+                        
+                        <p><strong>Étape 2:</strong> Divisons les deux membres par 5.</p>
+                        <p>x = 12/5 = 2,4</p>
+                        
+                        <p><strong>Vérification:</strong> 5 × 2,4 - 12 = 12 - 12 = 0 ✓</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercice 2</h4>
+                    <p>Résoudre l'équation: 3(x - 2) + 4 = x + 7</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Développons le membre de gauche.</p>
+                        <p>3(x - 2) + 4 = x + 7</p>
+                        <p>3x - 6 + 4 = x + 7</p>
+                        <p>3x - 2 = x + 7</p>
+                        
+                        <p><strong>Étape 2:</strong> Regroupons les termes avec x d'un côté.</p>
+                        <p>3x - x = 7 + 2</p>
+                        <p>2x = 9</p>
+                        
+                        <p><strong>Étape 3:</strong> Divisons par 2.</p>
+                        <p>x = 4,5</p>
+                        
+                        <p><strong>Vérification:</strong> 3(4,5 - 2) + 4 = 3 × 2,5 + 4 = 7,5 + 4 = 11,5 et x + 7 = 4,5 + 7 = 11,5 ✓</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercice 3</h4>
+                    <p>Résoudre l'équation: 2(x + 1) - 3(x - 2) = 4x - 5</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Développons chaque membre.</p>
+                        <p>2(x + 1) - 3(x - 2) = 4x - 5</p>
+                        <p>2x + 2 - 3x + 6 = 4x - 5</p>
+                        <p>2x - 3x + 2 + 6 = 4x - 5</p>
+                        <p>-x + 8 = 4x - 5</p>
+                        
+                        <p><strong>Étape 2:</strong> Regroupons les termes avec x d'un côté.</p>
+                        <p>-x - 4x = -5 - 8</p>
+                        <p>-5x = -13</p>
+                        
+                        <p><strong>Étape 3:</strong> Divisons par -5.</p>
+                        <p>x = -13/(-5) = 2,6</p>
+                        
+                        <p><strong>Vérification:</strong> En remplaçant x par 2,6 dans l'équation, on vérifie que les deux membres sont égaux.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Probabilités -->
+    <div class="modal-overlay" id="probabilites-lesson">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Probabilités - Leçon</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <h4>Définition et notions de base</h4>
+                <p>Les probabilités constituent une branche des mathématiques qui étudie les phénomènes aléatoires. Elles permettent de quantifier la chance qu'un événement se produise.</p>
+                
+                <h4>Concepts fondamentaux</h4>
+                <p><strong>Expérience aléatoire:</strong> Expérience dont le résultat relève du hasard et dont on connaît tous les résultats possibles.</p>
+                <p><strong>Issue:</strong> Résultat possible d'une expérience aléatoire.</p>
+                <p><strong>Univers (Ω):</strong> Ensemble de toutes les issues possibles d'une expérience aléatoire.</p>
+                <p><strong>Événement:</strong> Sous-ensemble de l'univers, c'est-à-dire un ensemble d'issues.</p>
+                
+                <h4>Calcul des probabilités</h4>
+                <div class="math-example">
+                    <p><strong>Probabilité simple:</strong></p>
+                    <p>P(A) = Nombre de cas favorables / Nombre de cas possibles</p>
+                    
+                    <p><strong>Probabilité de l'événement contraire:</strong></p>
+                    <p>P(non A) = 1 - P(A)</p>
+                    
+                    <p><strong>Probabilité conditionnelle:</strong></p>
+                    <p>P(A|B) = P(A ∩ B) / P(B)</p>
+                    <p>où P(A|B) représente la probabilité que A se réalise sachant que B est réalisé.</p>
+                </div>
+                
+                <h4>Propriétés importantes</h4>
+                <ul>
+                    <li>Pour tout événement A, 0 ≤ P(A) ≤ 1</li>
+                    <li>P(Ω) = 1 (probabilité de l'univers)</li>
+                    <li>P(∅) = 0 (probabilité de l'événement impossible)</li>
+                    <li>Si A et B sont deux événements disjoints (incompatibles), alors P(A ∪ B) = P(A) + P(B)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="probabilites-example">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Probabilités - Exemples</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <h4>Exemple 1: Probabilité simple</h4>
+                <p>On lance un dé à 6 faces. Quelle est la probabilité d'obtenir un nombre pair?</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Identifions tous les résultats possibles (univers).</p>
+                    <p>Ω = {1, 2, 3, 4, 5, 6}</p>
+                    <p>Nombre de cas possibles = 6</p>
+                    
+                    <p><strong>Étape 2:</strong> Identifions les cas favorables à l'événement "obtenir un nombre pair".</p>
+                    <p>Événement A = {2, 4, 6}</p>
+                    <p>Nombre de cas favorables = 3</p>
+                    
+                    <p><strong>Étape 3:</strong> Appliquons la formule de probabilité.</p>
+                    <p>P(A) = Nombre de cas favorables / Nombre de cas possibles</p>
+                    <p>P(A) = 3/6 = 1/2 = 0,5 = 50%</p>
+                </div>
+                
+                <h4>Exemple 2: Probabilité de l'événement contraire</h4>
+                <p>Dans un sac, il y a 20 boules, dont 8 sont rouges. On tire une boule au hasard. Quelle est la probabilité de ne pas tirer une boule rouge?</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Calculons d'abord la probabilité de tirer une boule rouge.</p>
+                    <p>P(Rouge) = 8/20 = 0,4 = 40%</p>
+                    
+                    <p><strong>Étape 2:</strong> Utilisons la formule de la probabilité de l'événement contraire.</p>
+                    <p>P(non Rouge) = 1 - P(Rouge) = 1 - 0,4 = 0,6 = 60%</p>
+                </div>
+                
+                <h4>Exemple 3: Probabilité conditionnelle</h4>
+                <p>Dans une classe, 60% des élèves sont des filles et 30% des élèves sont des filles qui portent des lunettes. Quelle est la probabilité qu'une fille porte des lunettes?</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Identifions les données du problème.</p>
+                    <p>P(Fille) = 0,6</p>
+                    <p>P(Fille ∩ Lunettes) = 0,3</p>
+                    
+                    <p><strong>Étape 2:</strong> Utilisons la formule de la probabilité conditionnelle.</p>
+                    <p>P(Lunettes|Fille) = P(Fille ∩ Lunettes) / P(Fille)</p>
+                    <p>P(Lunettes|Fille) = 0,3 / 0,6 = 0,5 = 50%</p>
+                    
+                    <p><strong>Conclusion:</strong> La probabilité qu'une fille porte des lunettes est de 50%.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="probabilites-exercise">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Probabilités - Exercices</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <div class="exercise">
+                    <h4>Exercice 1</h4>
+                    <p>On tire une carte au hasard dans un jeu de 52 cartes. Quelle est la probabilité de tirer un as?</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Identifions le nombre total de cas possibles.</p>
+                        <p>Nombre de cas possibles = 52 cartes</p>
+                        
+                        <p><strong>Étape 2:</strong> Identifions le nombre de cas favorables.</p>
+                        <p>Il y a 4 as dans un jeu de 52 cartes.</p>
+                        <p>Nombre de cas favorables = 4</p>
+                        
+                        <p><strong>Étape 3:</strong> Appliquons la formule de probabilité.</p>
+                        <p>P(As) = 4/52 = 1/13 ≈ 0,077 = 7,7%</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercice 2</h4>
+                    <p>Une urne contient 5 boules blanches et 3 boules noires. On tire successivement et sans remise deux boules. Quelle est la probabilité que les deux boules soient de la même couleur?</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Calculons le nombre total de tirages possibles.</p>
+                        <p>Nombre total = nombre de façons de choisir 2 boules parmi 8 = C(8,2) = 28</p>
+                        
+                        <p><strong>Étape 2:</strong> Calculons le nombre de façons d'obtenir 2 boules de même couleur.</p>
+                        <p>- Deux boules blanches: C(5,2) = 10 façons</p>
+                        <p>- Deux boules noires: C(3,2) = 3 façons</p>
+                        <p>Total de cas favorables = 10 + 3 = 13</p>
+                        
+                        <p><strong>Étape 3:</strong> Appliquons la formule de probabilité.</p>
+                        <p>P(Même couleur) = 13/28 ≈ 0,464 = 46,4%</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercice 3</h4>
+                    <p>Dans une configuration de probabilités, on a P(A) = 0,3 et P(B) = 0,4. Quelle est la probabilité que A ou B se produise?</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Identifions les données du problème.</p>
+                        <p>P(A) = 0,3</p>
+                        <p>P(B) = 0,4</p>
+                        
+                        <p><strong>Étape 2:</strong> Utilisons la formule de la probabilité pour l'événement union (ou).</p>
+                        <p>P(A ∪ B) = P(A) + P(B) - P(A ∩ B)</p>
+                        <p>Si A et B sont indépendants, P(A ∩ B) = P(A) × P(B)</p>
+                        <p>P(A ∪ B) = 0,3 + 0,4 - (0,3 × 0,4)</p>
+                        <p>P(A ∪ B) = 0,7 - 0,12 = 0,58</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Géométrie -->
+    <div class="modal-overlay" id="geometrie-lesson">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Géométrie - Leçon</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <h4>Définitions et formules fondamentales</h4>
+                <p>La géométrie est la branche des mathématiques qui étudie les figures, les formes et les transformations de l'espace. Elle comprend l'étude des distances, des angles, des surfaces et des volumes.</p>
+                
+                <h4>Formules principales</h4>
+                <div class="math-example">
+                    <p><strong>Cercle:</strong></p>
+                    <p>Aire = π × r²</p>
+                    <p>Périmètre (circonférence) = 2π × r</p>
+                    <p>où r est le rayon du cercle</p>
+                    
+                    <p><strong>Rectangle:</strong></p>
+                    <p>Aire = longueur × largeur</p>
+                    <p>Périmètre = 2 × (longueur + largeur)</p>
+                    
+                    <p><strong>Triangle:</strong></p>
+                    <p>Aire = (base × hauteur) / 2</p>
+                    <p>Périmètre = côté1 + côté2 + côté3</p>
+                    
+                    <p><strong>Carré:</strong></p>
+                    <p>Aire = côté²</p>
+                    <p>Périmètre = 4 × côté</p>
+                    
+                    <p><strong>Trapèze:</strong></p>
+                    <p>Aire = ((petite base + grande base) × hauteur) / 2</p>
+                    
+                    <p><strong>Parallélogramme:</strong></p>
+                    <p>Aire = base × hauteur</p>
+                    
+                    <p><strong>Cylindre:</strong></p>
+                    <p>Volume = π × r² × hauteur</p>
+                    <p>Surface totale = 2π × r × (r + hauteur)</p>
+                </div>
+                
+                <h4>Propriétés importantes</h4>
+                <ul>
+                    <li>La somme des angles dans un triangle est égale à 180°</li>
+                    <li>La somme des angles dans un quadrilatère est égale à 360°</li>
+                    <li>Dans un triangle rectangle, les deux angles aigus sont complémentaires (leur somme vaut 90°)</li>
+                    <li>Deux triangles sont semblables si leurs angles correspondants sont égaux</li>
+                </ul>
+                
+                <h4>Transformations géométriques</h4>
+                <p>Les principales transformations géométriques incluent:</p>
+                <ul>
+                    <li>Translation: déplacement en ligne droite</li>
+                    <li>Rotation: pivotement autour d'un point</li>
+                    <li>Homothétie: agrandissement ou réduction</li>
+                    <li>Symétrie: axiale (par rapport à une droite) ou centrale (par rapport à un point)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="geometrie-example">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Géométrie - Exemples</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <h4>Exemple 1: Calcul de l'aire et du périmètre d'un cercle</h4>
+                <p>Calculons l'aire et le périmètre d'un cercle de rayon 5 cm.</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Identifions la valeur du rayon.</p>
+                    <p>r = 5 cm</p>
+                    
+                    <p><strong>Étape 2:</strong> Appliquons la formule de l'aire.</p>
+                    <p>Aire = π × r²</p>
+                    <p>Aire = π × 5²</p>
+                    <p>Aire = π × 25</p>
+                    <p>Aire ≈ 78,54 cm²</p>
+                    
+                    <p><strong>Étape 3:</strong> Appliquons la formule du périmètre.</p>
+                    <p>Périmètre = 2π × r</p>
+                    <p>Périmètre = 2π × 5</p>
+                    <p>Périmètre = 10π</p>
+                    <p>Périmètre ≈ 31,42 cm</p>
+                </div>
+                
+                <h4>Exemple 2: Calcul de l'aire d'un triangle</h4>
+                <p>Calculons l'aire d'un triangle de base 8 cm et de hauteur 6 cm.</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Identifions les valeurs de la base et de la hauteur.</p>
+                    <p>Base = 8 cm</p>
+                    <p>Hauteur = 6 cm</p>
+                    
+                    <p><strong>Étape 2:</strong> Appliquons la formule de l'aire du triangle.</p>
+                    <p>Aire = (base × hauteur) / 2</p>
+                    <p>Aire = (8 × 6) / 2</p>
+                    <p>Aire = 48 / 2</p>
+                    <p>Aire = 24 cm²</p>
+                </div>
+                
+                <h4>Exemple 3: Calcul de l'aire et du périmètre d'un rectangle</h4>
+                <p>Calculons l'aire et le périmètre d'un rectangle de longueur 12 cm et de largeur 7 cm.</p>
+                
+                <div class="math-example">
+                    <p><strong>Étape 1:</strong> Identifions les valeurs de la longueur et de la largeur.</p>
+                    <p>Longueur = 12 cm</p>
+                    <p>Largeur = 7 cm</p>
+                    
+                    <p><strong>Étape 2:</strong> Appliquons la formule de l'aire.</p>
+                    <p>Aire = longueur × largeur</p>
+                    <p>Aire = 12 × 7</p>
+                    <p>Aire = 84 cm²</p>
+                    
+                    <p><strong>Étape 3:</strong> Appliquons la formule du périmètre.</p>
+                    <p>Périmètre = 2 × (longueur + largeur)</p>
+                    <p>Périmètre = 2 × (12 + 7)</p>
+                    <p>Périmètre = 2 × 19</p>
+                    <p>Périmètre = 38 cm</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="geometrie-exercise">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Géométrie - Exercices</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-nav-buttons">
+                <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-content">
+                <div class="exercise">
+                    <h4>Exercice 1</h4>
+                    <p>Calculez l'aire et le périmètre d'un carré de côté 9 cm.</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Identifions la valeur du côté.</p>
+                        <p>Côté = 9 cm</p>
+                        
+                        <p><strong>Étape 2:</strong> Appliquons la formule de l'aire du carré.</p>
+                        <p>Aire = côté²</p>
+                        <p>Aire = 9²</p>
+                        <p>Aire = 81 cm²</p>
+                        
+                        <p><strong>Étape 3:</strong> Appliquons la formule du périmètre du carré.</p>
+                        <p>Périmètre = 4 × côté</p>
+                        <p>Périmètre = 4 × 9</p>
+                        <p>Périmètre = 36 cm</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercice 2</h4>
+                    <p>Calculez l'aire d'un cercle dont le périmètre est de 62,8 cm.</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Déterminons d'abord le rayon à partir du périmètre.</p>
+                        <p>Périmètre = 2π × r</p>
+                        <p>62,8 = 2π × r</p>
+                        <p>r = 62,8 / (2π)</p>
+                        <p>r = 31,4 / π</p>
+                        <p>r ≈ 10 cm</p>
+                        
+                        <p><strong>Étape 2:</strong> Calculons maintenant l'aire avec ce rayon.</p>
+                        <p>Aire = π × r²</p>
+                        <p>Aire = π × 10²</p>
+                        <p>Aire = π × 100</p>
+                        <p>Aire ≈ 314,16 cm²</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>Exercice 3</h4>
+                    <p>Un jardin rectangulaire a une longueur de 25 m et une largeur de 15 m. On souhaite planter une haie sur tout le périmètre, à l'exception d'une ouverture de 2 m pour l'entrée. Quelle longueur de haie doit-on acheter?</p>
+                    <button class="solution-toggle">Afficher la solution</button>
+                    <div class="solution">
+                        <p><strong>Étape 1:</strong> Calculons d'abord le périmètre total du jardin.</p>
+                        <p>Périmètre = 2 × (longueur + largeur)</p>
+                        <p>Périmètre = 2 × (25 + 15)</p>
+                        <p>Périmètre = 2 × 40</p>
+                        <p>Périmètre = 80 m</p>
+                        
+                        <p><strong>Étape 2:</strong> Soustrayons la longueur de l'ouverture.</p>
+                        <p>Longueur de haie = Périmètre - Ouverture</p>
+                        <p>Longueur de haie = 80 - 2</p>
+                        <p>Longueur de haie = 78 m</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <p>Le lien a été copié !</p>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
